@@ -68,7 +68,9 @@ const Register = props => (
       }
 
       const onChangeTopic = event => {
-        changeTopic(event.target.value)
+        const id = event.target.value
+        const displayValue = topicsList.filter(each => each.id === id)
+        changeTopic(displayValue[0].displayText)
       }
 
       return (
@@ -94,7 +96,7 @@ const Register = props => (
                 </InputContainer>
                 <InputContainer>
                   <Label htmlFor="topic">Topics</Label>
-                  <Select id="topic" value={topic} onChange={onChangeTopic}>
+                  <Select id="topic" onChange={onChangeTopic}>
                     {topicsList.map(each => (
                       <option value={each.id} key={each.id}>
                         {each.displayText}
